@@ -56,19 +56,109 @@ class HBNBCommand(cmd.Cmd):
         if not arg:
             print("** class name missing **")
             return
+
         arg_list = arg.split(' ')
-        class_name = globals().get(arg_list[0])
-        if class_name:
+        class_name = arg_list[0]
+        class_obj = globals().get(class_name)
+        if class_obj:
             if len(arg_list) < 2:
                 print("** instance id missing **")
             else:
                 ins_id = arg_list[1]
-                data = storage.get_objects()
-                for key in data:
-                    if data[key]["id"] == ins_id:
-                        data_list = data.split('}{')
-                        obj1 = BaseModel(data)
+                data = storage.all()
+                for key, value in data.items():
+                    if key == class_name + "." + ins_id:
+                        obj1 = class_obj(value)
                         print(obj1)
+                        return
+                print("** no instance found **")
+        else:
+            print("** class doesn't exist **")
+
+    def do_destroy(self, arg):
+        """Deletes an instance based on the class name and id"""
+
+        if not arg:
+            print("** class name missing **")
+            return
+        arg_list = arg.split(' ')
+        class_name = arg_list[0]
+        class_obj = globals().get(class_name)
+        if class_obj:
+            if len(arg_list) < 2:
+                print("** instance id missing **")
+            else:
+                ins_id = arg_list[1]
+                data = storage.all()
+                for key, value in data.items():
+                    if key == class_name + "." + ins_id:
+                        del data[key]
+                        storage.save()
+                        return
+                print("** no instance found **")
+        else:
+            print("** class doesn't exist **")
+
+    def do_all(self, arg):
+        """Prints all string representation of all instances
+        based or not not on the class name"""
+        
+        obj_list = []
+        if not arg:
+            data = storage.all()
+            '''for key, value in data.items():
+                #obj_list.append(obj.__str__())
+                class_name = value['__class__']
+                class_obj = globals().get(class_name)
+                obj1 = class_obj(value)
+                obj_list.append(str(obj1))'''
+                #print(class_name)
+            print('This part is under surveillance')
+            return
+        arg_list = arg.split(' ')
+        class_name = arg_list[0]
+        class_obj = globals().get(class_name)
+        if class_obj:
+            '''data = storage.all()
+            for key, value in data.items():
+                obj1 = class_obj(value)
+                obj_list.append(str(obj1))
+            print(obj_list)'''
+            print('This part is under surveillance')
+        else:
+            print("** class doesn't exist **")
+
+    def do_update(self, arg):
+        """Updates an instance based on the class name
+        and id by adding or updating attribute
+        (save the change into the JSON file).
+        """
+
+        if not arg:
+            print("** class name missing **")
+            return
+
+        arg_list = arg.split(' ')
+        class_name = arg_list[0]
+        class_obj = globals().get(class_name)
+        if class_obj:
+            if len(arg_list) < 2:
+                print("** instance id missing **")
+            else:
+                ins_id = arg_list[1]
+                data = storage.all()
+                for key, value in data.items():
+                    if key == class_name + "." + ins_id:
+                        if len(arg_list) < 3:
+                            print("** attribute name missing **")
+                        else:
+                            if len(arg_list) < 4:
+                                print("** value missing **")
+                            else:
+                                attr = arg_list[2]
+                                attr_value = arg_list[3]
+                                print(attr)
+                                print(attr_value)
                         return
                 print("** no instance found **")
         else:
