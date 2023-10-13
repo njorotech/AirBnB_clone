@@ -23,11 +23,11 @@ To access our project and also manipulate data, we created a command Interpreter
 
 ### Here are some example of commands you can use:
 - To create a new object:
-  create object_name key1=value1 key2=value2 ...
+  **create object_name key1=value1 key2=value2 ...**
 - To update an object:
-  update object_name object_id key=new_value
+  **update object_name object_id key=new_value**
 - To delete an object:
-  destroy object_name object_id
+  **destroy object_name object_id**
 - To exit the interpreter:
-  quit
+  **quit**
 
