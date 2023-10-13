@@ -155,10 +155,17 @@ class HBNBCommand(cmd.Cmd):
                             if len(arg_list) < 4:
                                 print("** value missing **")
                             else:
-                                attr = arg_list[2]
+                                attr_name = arg_list[2]
                                 attr_value = arg_list[3]
-                                print(attr)
-                                print(attr_value)
+                                attr_type = type(getattr(value, attr_name))
+                                if attr_type is str:
+                                    attr_value = str(attr_value)
+                                elif attr_type is int:
+                                    attr_value = int(attr_value)
+                                elif attr_type is float:
+                                    attr_value = float(attr_value)
+                                setattr(value, attr_name, attr_value)
+                                storage.save()
                         return
                 print("** no instance found **")
         else:
