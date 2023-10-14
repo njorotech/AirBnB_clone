@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Test suits for city
+Test suits for places
 """
 import os
 import models
