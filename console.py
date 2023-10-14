@@ -20,7 +20,7 @@ class HBNBCommand(cmd.Cmd):
         """Exit the program on receiving end-of-file marker"""
 
         return True
-    
+
     def do_quit(self, line):
         """Quit command to exit the program"""
 
@@ -35,7 +35,7 @@ class HBNBCommand(cmd.Cmd):
         """Creates a new instance of BaseModel, saves it
         and prints the id
         """
-        
+
         if not arg:
             print("** class name missing **")
             return
@@ -47,7 +47,7 @@ class HBNBCommand(cmd.Cmd):
             print(new_inst.id)
         else:
             print("** class doesn't exist **")
-    
+
     def do_show(self, arg):
         """Prints the string representation of an instance
         based on the class name and id
@@ -102,17 +102,18 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, arg):
         """Prints all string representation of all instances
         based or not not on the class name"""
-        
+
         obj_list = []
         if not arg:
             data = storage.all()
-            '''for key, value in data.items():
-                #obj_list.append(obj.__str__())
-                class_name = value['__class__']
-                class_obj = globals().get(class_name)
-                obj1 = class_obj(value)
-                obj_list.append(str(obj1))'''
-                #print(class_name)
+            """for key, value in data.items():
+            #obj_list.append(obj.__str__())
+            class_name = value['__class__']
+            class_obj = globals().get(class_name)
+            obj1 = class_obj(value)
+            obj_list.append(str(obj1))
+            # print(class_name)
+            """
             print('This part is under surveillance')
             return
         arg_list = arg.split(' ')
