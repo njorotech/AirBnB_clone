@@ -4,6 +4,10 @@
 		<meta charset="utf-8">
 		<title>Web static</title>
 		<style>
+			body {
+				margin: 0;
+				padding: 0;
+			}
 			header {
 				background: #FF0000;
 				height: 70px;
@@ -14,13 +18,14 @@
 				background: #00FF00;
 				height: 60px;
 				width: 100%;
-				position:absolute;
-				bottom: 0%;
-			}
-
-			footer p {
+				position:fixed;
+				bottom: 0;
+				display: flex;
+				align-items: center;
+				justify-content: center;
 				text-align: center;
 			}
+
 		</style>
 	</head>
 	<body>
@@ -28,7 +33,7 @@
 
 		</header>
 		<footer>
-			<p>Best School</p>
+			Best School
 		</footer>
 	</body>
 </html>
