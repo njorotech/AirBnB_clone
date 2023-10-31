@@ -11,4 +11,17 @@ body {
 	margin: 30px auto;
 }
 
+.container h3 {
+	font-weight: 600;
+	margin-top: 12px;
+	margin-bottom: 5px;
+}
+
+.container h4 {
+	font-weight: 400;
+	font-size: 14px;
+	margin-top: 5px;
+	margin-bottom: 12px;
+}
+
 
